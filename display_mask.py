@@ -1,7 +1,7 @@
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
-from read_gsfc_mask import read_gsfc_mask
+from read_mask import read_mask
 import numpy as np
 
 
@@ -11,7 +11,7 @@ def display_mask(file):
     # import matplotlib
     # matplotlib.use("TkAgg")
 
-    data, extent, hemisphere = read_gsfc_mask(file)
+    data, extent, hemisphere = read_mask(file)
     print(file + " min=" + str(np.min(data)) + ", max=" + str(np.max(data)))
 
     if hemisphere == 1:

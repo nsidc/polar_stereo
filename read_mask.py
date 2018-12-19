@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def read_gsfc_mask(file):
+def read_mask(file):
     dtype = np.uint8
 
     # Python is in row-major order so the vertical dimension comes first

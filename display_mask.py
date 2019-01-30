@@ -6,6 +6,15 @@ import numpy as np
 
 
 def display_mask(file):
+    """Read in and display a Polar Stereographic mask file.
+
+    Args:
+        file (string): full path to a Polar Stereographic mask file
+
+    Examples:
+        display_mask("masks/pole_n.msk")
+    """
+
     # On the Mac terminal you may need to use the TkAgg framework
     # or run pythonw to avoid crashes with matplotlib windows.
     # import matplotlib
@@ -48,16 +57,19 @@ def display_mask(file):
 
 
 if __name__ == "__main__":
-    display_mask("masks/pole_n.msk")
-    display_mask("masks/region_n.msk")
-    display_mask("masks/region_s.msk")
+    display_mask("masks/gsfc_pole_hole.N17")
     # display_mask("masks/landmask.ntb")
     # display_mask("masks/landmask.stb")
-    # display_mask("masks/gsfc_25s.msk")
-    # display_mask("masks/gsfc_25n.msk")
-    # display_mask("masks/ltln_12s.msk")
+    # display_mask("masks/gsfc_12n.msk")
     # display_mask("masks/gsfc_12s.msk")
+    # display_mask("masks/gsfc_25n.msk")
+    # display_mask("masks/gsfc_25s.msk")
+    # display_mask("masks/coast_12n.msk")
     # display_mask("masks/coast_12s.msk")
     # display_mask("masks/ltln_12n.msk")
-    # display_mask("masks/gsfc_12n.msk")
-    # display_mask("masks/coast_12n.msk")
+    # display_mask("masks/ltln_12s.msk")
+    # display_mask("masks/ltln_25n.msk")
+    # display_mask("masks/ltln_25s.msk")
+    # display_mask("masks/pole_n.msk")
+    # display_mask("masks/region_n.msk")
+    # display_mask("masks/region_s.msk")

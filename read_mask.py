@@ -3,10 +3,10 @@ import numpy as np
 
 def read_mask(file):
     """Read in a Polar Stereographic mask file.
-    
+
     Args:
         file (string): full path to a Polar Stereographic mask file
-    
+
     Returns:
         A tuple containing data, extent, hemisphere
         data: a two-dimensional numpy array, nrows x ncolumns
@@ -30,7 +30,8 @@ def read_mask(file):
         dims = 664, 632
         extent = (-3950000, 3950000,
                   -3950000, 4350000)
-    if "25n" in file or "pole_n" in file or "region_n" in file:
+    if "25n" in file or "pole_n" in file or \
+            "region_n" in file or "N17" in file:
         hemisphere = 1
         dims = 448, 304
         extent = (-3850000, 3750000,

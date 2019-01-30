@@ -2,6 +2,21 @@ import numpy as np
 
 
 def read_mask(file):
+    """Read in a Polar Stereographic mask file.
+    
+    Args:
+        file (string): full path to a Polar Stereographic mask file
+    
+    Returns:
+        A tuple containing data, extent, hemisphere
+        data: a two-dimensional numpy array, nrows x ncolumns
+        extent: A tuple containing (lonmin, lonmax, latmin, latmax) in km
+        hemisphere: 1 for Northern, -1 for Southern
+
+    Examples:
+        data, extent, hemisphere = read_mask("masks/pole_n.msk")
+    """
+
     dtype = np.uint8
 
     # Python is in row-major order so the vertical dimension comes first
@@ -39,7 +54,10 @@ def read_mask(file):
                   -3950000, 4350000)
 
     if "region" in file:
-        dt = np.dtype([('header', np.uint8, 300), ('data', np.uint8, dims[0] * dims[1])])
+        # the "region" files have a 300-byte header that we need to skip over
+        dt_header = ('header', np.uint8, 300)
+        dt_data = ('data', np.uint8, dims[0] * dims[1])
+        dt = np.dtype([dt_header, dt_data])
         data = np.fromfile(file, dtype=dt)
         data = np.reshape(data['data'], dims)
     else:

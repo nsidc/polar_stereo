@@ -2,6 +2,7 @@ import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 from read_mask import read_mask
+from read_mask_hdf import read_mask_hdf
 import numpy as np
 
 
@@ -20,8 +21,13 @@ def display_mask(file):
     # import matplotlib
     # matplotlib.use("TkAgg")
 
-    data, extent, hemisphere = read_mask(file)
-    print(file + " min=" + str(np.min(data)) + ", max=" + str(np.max(data)))
+    if file.endswith('hdf'):
+        data, extent, hemisphere = read_mask_hdf(file)
+    else:
+        data, extent, hemisphere = read_mask(file)
+
+    print(file + " shape=" + str(data.shape) + ", min=" + \
+        str(np.min(data)) + ", max=" + str(np.max(data)))
 
     if hemisphere == 1:
         clat = 90
@@ -57,19 +63,36 @@ def display_mask(file):
 
 
 if __name__ == "__main__":
-    display_mask("masks/gsfc_pole_hole.N17")
-    # display_mask("masks/landmask.ntb")
-    # display_mask("masks/landmask.stb")
-    # display_mask("masks/gsfc_12n.msk")
-    # display_mask("masks/gsfc_12s.msk")
-    # display_mask("masks/gsfc_25n.msk")
-    # display_mask("masks/gsfc_25s.msk")
-    # display_mask("masks/coast_12n.msk")
-    # display_mask("masks/coast_12s.msk")
-    # display_mask("masks/ltln_12n.msk")
-    # display_mask("masks/ltln_12s.msk")
-    # display_mask("masks/ltln_25n.msk")
-    # display_mask("masks/ltln_25s.msk")
-    # display_mask("masks/pole_n.msk")
-    # display_mask("masks/region_n.msk")
-    # display_mask("masks/region_s.msk")
+    if True:
+        display_mask("masks/amsr_nic_6s.hdf")
+        display_mask("masks/amsr_nic_12s.hdf")
+        display_mask("masks/amsr_nic_25s.hdf")
+        display_mask("masks/amsr_gsfc_6n.hdf")
+        display_mask("masks/amsr_gsfc_6s.hdf")
+        display_mask("masks/amsr_gsfc_12n.hdf")
+        display_mask("masks/amsr_gsfc_12s.hdf")
+        display_mask("masks/amsr_gsfc_25n.hdf")
+        display_mask("masks/amsr_gsfc_25s.hdf")
+    if False:
+        display_mask("masks/amsr_gsfc_6n.hdf")
+        display_mask("masks/amsr_gsfc_6s.hdf")
+        display_mask("masks/amsr_gsfc_12n.hdf")
+        display_mask("masks/amsr_gsfc_12s.hdf")
+        display_mask("masks/amsr_gsfc_25n.hdf")
+        display_mask("masks/amsr_gsfc_25s.hdf")
+        display_mask("masks/landmask.ntb")
+        display_mask("masks/landmask.stb")
+        display_mask("masks/gsfc_12n.msk")
+        display_mask("masks/gsfc_12s.msk")
+        display_mask("masks/gsfc_25n.msk")
+        display_mask("masks/gsfc_25s.msk")
+        display_mask("masks/gsfc_pole_hole.N17")
+        display_mask("masks/coast_12n.msk")
+        display_mask("masks/coast_12s.msk")
+        display_mask("masks/ltln_12n.msk")
+        display_mask("masks/ltln_12s.msk")
+        display_mask("masks/ltln_25n.msk")
+        display_mask("masks/ltln_25s.msk")
+        display_mask("masks/pole_n.msk")
+        display_mask("masks/region_n.msk")
+        display_mask("masks/region_s.msk")
